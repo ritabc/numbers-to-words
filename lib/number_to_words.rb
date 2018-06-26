@@ -17,12 +17,16 @@ class NumberToWords
       ones_and_teens.fetch(@number)
     elsif (number_to_translate[1] + number_to_translate[0]).to_i() <= 19 && number_to_translate.length() <= 2
       ones_and_teens.fetch(@number)
-    elsif (number_to_translate[1] + number_to_translate[0]).to_i() >= 20
+    elsif (number_to_translate[1] + number_to_translate[0]).to_i() >= 20 && number_to_translate.length() <= 2
       tens.fetch((number_to_translate[1]).to_i()) + " " + ones_and_teens.fetch((number_to_translate[0]).to_i())
     elsif number_to_translate.length() == 3 && (number_to_translate[1] + number_to_translate[0]).to_i() == 0
       hundreds.fetch((number_to_translate[2]).to_i())
     elsif (number_to_translate[1] + number_to_translate[0]).to_i() <= 19 && number_to_translate.length() == 3
       hundreds.fetch((number_to_translate[2]).to_i()) + " " + ones_and_teens.fetch((number_to_translate[1] + number_to_translate[0]).to_i())
+    elsif (number_to_translate[1] + number_to_translate[0]).to_i() >= 20 && number_to_translate.length() == 3
+      hundreds.fetch((number_to_translate[2]).to_i()) + " " + tens.fetch((number_to_translate[1]).to_i()) + " " +
+       ones_and_teens.fetch((number_to_translate[0]).to_i())
+
     # else
     #   x = 0
     #   number_to_translate.each do |digit|

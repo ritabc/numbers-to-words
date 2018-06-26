@@ -33,6 +33,6 @@ describe ("NumberToWords#translate") do
   end
   it "will take the number 123 and return one hundred twenty three" do
     number = NumberToWords.new(123)
-    expect(number.translate()).to(eq"one hundred twenty three")
+    expect(number.translate()).to(eq("one hundred twenty three"))
   end
 end
