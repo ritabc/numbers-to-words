@@ -15,10 +15,15 @@ class NumberToWords
     check_thousands = thousands.keys()
     number_to_translate = @number.to_s().split('').reverse()
 
+    # If we have a 1 digiti number, return that number
     if number_to_translate.length() == 1
       ones_and_teens.fetch(@number)
-    elsif (number_to_translate[1] + number_to_translate[0]).to_i() <= 19 && number_to_translate.length() <= 2
+
+    # if we have a 2 digit number  (whose last 2 digits are <= 19), return the number
+    elsif (number_to_translate[1] + number_to_translate[0]).to_i() <= 19 && number_to_translate.length() == 2
       ones_and_teens.fetch(@number)
+
+    # if we have a 2 digit number whose last 2 digits >= 20, return tens + ones
     elsif (number_to_translate[1] + number_to_translate[0]).to_i() >= 20 && number_to_translate.length() <= 2
       tens.fetch((number_to_translate[1]).to_i()) + " " + ones_and_teens.fetch((number_to_translate[0]).to_i())
     elsif number_to_translate.length() == 3 && (number_to_translate[1] + number_to_translate[0]).to_i() == 0
