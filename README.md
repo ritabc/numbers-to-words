@@ -15,7 +15,7 @@ A class String that has a method to get the translation of numbers in numeric fo
 * _3. Example Input: 10, 20, ... 90_
 * _4. Example Input: 22_
 * _5. Example Input: 100, ... 900. _
-* _6. Example Input: 123 Example Output: one hundred twenty three_
+* _6. Example Input: 119 Example Output: one hundred nineteen_
 * _7. Example Input: 123 Example Output: one hundred twenty three_
 * _8. Input: 1000 (one thousand)
 * _9. Example Input: 100000, Example Output: one million_
