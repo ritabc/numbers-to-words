@@ -39,4 +39,8 @@ describe ("NumberToWords#translate") do
     number = NumberToWords.new(1000)
     expect(number.translate()).to(eq("one thousand"))
   end
+  it "will take the number 240 and two hundred forty" do
+    number = NumberToWords.new(240)
+    expect(number.translate()).to(eq("two hundred forty"))
+  end
 end
