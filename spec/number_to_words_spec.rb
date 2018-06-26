@@ -24,7 +24,11 @@ describe ("NumberToWords#translate") do
     expect(number.translate()).to(eq("twenty three"))
   end
   it "will take the number 100 and return one hundred" do
-    number = NumberToWords.new(100)
-    expect(number.translate()).to(eq("one hundred"))
+    number = NumberToWords.new(200)
+    expect(number.translate()).to(eq("two hundred"))
+  end
+  it "will take the number 119 and return one hundred nineteen" do
+    number = NumberToWords.new(217)
+    expect(number.translate()).to(eq("two hundred seventeen"))
   end
 end
