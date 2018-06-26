@@ -13,8 +13,11 @@ class NumberToWords
 
     if number_to_translate.length() == 1
       ones_and_teens.fetch(@number)
-    elsif (number_to_translate[1] + number_to_translate[0]).to_i() < 19
+    elsif (number_to_translate[1] + number_to_translate[0]).to_i() <= 19
       ones_and_teens.fetch(@number)
+    elsif (number_to_translate[1] + number_to_translate[0]).to_i() >= 20
+      tens.fetch((number_to_translate[1]).to_i()) + " " + ones_and_teens.fetch((number_to_translate[0]).to_i())
+
     # else
     #   x = 0
     #   number_to_translate.each do |digit|
