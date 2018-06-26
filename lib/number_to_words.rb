@@ -1,8 +1,12 @@
 class NumberToWords
 
-  # def translate()
-  #   ones = Hash.new  }
-  #
-  # end
+  def initialize(number)
+    @number = number
+  end
+
+  def translate()
+    ones = {3 => "three"}
+    ones.fetch(@number)
+  end
 
 end
