@@ -28,12 +28,19 @@ class NumberToWords
       i = 0
       backwards_number_array.each do |digit|
         # binding.pry
-        if i == 3
-          word_elements.push(base_ten.fetch(backwards_number_array.length()))
+        if i == 4
+          if ((backwards_number_array[4] + backwards_number_array[3]).to_i()) <= 19
+            word_elements.push(ones_and_teens.fetch((backwards_number_array[4] + backwards_number_array[3]).to_i()))
+          elsif ((backwards_number_array[4] + backwards_number_array[3]).to_i()) > 19
+            word_elements.push(ones_and_teens.fetch(backwards_number_array[3].to_i()))
+            word_elements.push(tens.fetch(backwards_number_array[4].to_i()))
+          end
+          i = i + 1
+        elsif i == 3
+          word_elements.push(base_ten.fetch(i + 1))
           word_elements.push(ones_and_teens.fetch(digit.to_i()))
           i = i + 1
         elsif i == 2
-
           word_elements.push(base_ten.fetch(i + 1))
           word_elements.push(ones_and_teens.fetch(digit.to_i()))
           i = i + 1
@@ -43,19 +50,6 @@ class NumberToWords
         end
       end
     end
-    # elsif @number >= 1000
-    #   i = 0
-    #   backwards_number_array.each do |digit|
-    #     if i == 3
-    #       word_elements.push(base_ten.fetch(backwards_number_array.length()))
-    #       word_elements.push(ones_and_teens.fetch(digit.to_i()))
-    #       i = i + 1
-    #     else
-    #       word_elements.push((hash_array[i]).fetch(digit.to_i()))
-    #       i = i + 1
-    #     end
-    #   end
-    # end
-    word_elements.reverse().join(" ").rstrip()
+    word_elements.reverse().join(" ").split(" ").join(" ").rstrip()
   end
 end
