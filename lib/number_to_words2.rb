@@ -11,6 +11,8 @@ class NumberToWords
     hash_array = [ones_and_teens, tens, ones_and_teens]
 
     backwards_number_array = @number.to_s().split('').reverse()
+    forward_number_array = @number.to_s().split('')
+
     number_of_digits = backwards_number_array.length()
     word_elements = []
 
@@ -26,19 +28,23 @@ class NumberToWords
       end
     elsif @number >= 100
       i = 0
+      # if (number_of_digits == 5 || number_of_digits == 8) && (forward_number_array[0] + forward_number_array[1]).to_i() <= 19
+      #   word_elements.push(ones_and_teens.fetch((backwards_number_array[4] + backwards_number_array[3]).to_i()))
+      # end
       backwards_number_array.each do |digit|
-        # binding.pry
         if i == 4
           if ((backwards_number_array[4] + backwards_number_array[3]).to_i()) <= 19
+            word_elements.pop()
             word_elements.push(ones_and_teens.fetch((backwards_number_array[4] + backwards_number_array[3]).to_i()))
           elsif ((backwards_number_array[4] + backwards_number_array[3]).to_i()) > 19
+            word_elements.pop()
             word_elements.push(ones_and_teens.fetch(backwards_number_array[3].to_i()))
             word_elements.push(tens.fetch(backwards_number_array[4].to_i()))
           end
           i = i + 1
         elsif i == 3
           word_elements.push(base_ten.fetch(i + 1))
-          word_elements.push(ones_and_teens.fetch(digit.to_i()))
+          word_elements.push(ones_and_teens.fetch(digit.to_i())) # on 14K this adds the extra 4. But on 20k
           i = i + 1
         elsif i == 2
           word_elements.push(base_ten.fetch(i + 1))
